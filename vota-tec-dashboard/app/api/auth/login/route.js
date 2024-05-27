@@ -49,7 +49,7 @@ export async function POST(request) {
       });
 
       return adminResponse;
-    } else if (user && user.get("rol_usuario") === "ALUMNO" && user.get("voto") === false) {
+    } else if (user && user.get("rol_usuario") === "ALUMNO" && user.get("voto") === "NO") {
       // expire in 10 minutes
       const userToken = sign(
         {

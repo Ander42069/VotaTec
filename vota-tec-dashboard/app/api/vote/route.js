@@ -6,10 +6,8 @@ import Vote from "@/models/vote";
 import { cookies } from "next/headers";
 import { set } from "mongoose";
 
-export async function PATCH(request) {
+export async function POST(request) {
     try {
-
-
         // Obtiene el token del usuario
         const cookieStore = cookies();
         const token = cookieStore.get("userToken");
@@ -22,7 +20,7 @@ export async function PATCH(request) {
 
         console.log(numero_control);
 
-        const voto = true;
+        //const voto = "NO";
 
 
         if (!token) {
@@ -39,8 +37,8 @@ export async function PATCH(request) {
         connect();
         const user = await User.findOneAndUpdate(
             { numero_control: numero_control },
-            { voto: voto },
-            { new: true }
+            { voto: 'SI' },
+            { new: 'SI' }
         );
 
         console.log(user);

@@ -29,6 +29,6 @@ const schema = mongoose.Schema({
 }, { timestamps: true });
 
 // Comprueba si el modelo ya está definido antes de compilarlo
-const User = mongoose.models.User || mongoose.model("User", schema, "Users");
+const User = mongoose.models.User || mongoose.model("User", schema, "users");
 
 export default User;

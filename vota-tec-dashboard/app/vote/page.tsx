@@ -29,7 +29,7 @@ const VotePage: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.patch('/api/vote', { candidate });
+      const res = await axios.post('/api/vote', { candidate });
       console.log(res.data);
       console.log(`Votaste por ${candidate.name}`);
       setVoted(true);
