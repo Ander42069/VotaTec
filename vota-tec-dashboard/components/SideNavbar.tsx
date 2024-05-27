@@ -96,7 +96,7 @@ export default function SideNavbar({}: Props) {
             variant: "ghost",
             onClick: handleLogoutClick
           },
-          {
+          /*{
             title: "Test",
             
             icon: UsersRound,
@@ -115,7 +115,7 @@ export default function SideNavbar({}: Props) {
                 console.error("Error:", error);
               }
             } // Add closing parenthesis here
-          },
+          },*/
         ]}
       />
     </div>
