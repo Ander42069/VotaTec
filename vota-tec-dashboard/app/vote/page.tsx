@@ -8,13 +8,36 @@ interface Candidate {
   name: string;
   slogan: string;
   description: string;
+  proposals: string[];
+  values: string[];
   imageUrl: string;
 }
 
 const candidates: Candidate[] = [
-  { name: 'Candidato 1', slogan: '¡Por un futuro brillante!', description: 'Candidato 1 es conocido por su arduo trabajo y dedicación a la comunidad.', imageUrl: '/images/candidato1.jpg' },
-  { name: 'Candidato 2', slogan: '¡Juntos construiremos un mejor mañana!', description: 'Candidato 2 ha trabajado incansablemente para mejorar nuestras infraestructuras.', imageUrl: '/images/candidato2.jpg' },
-  { name: 'Candidato 3', slogan: '¡Innovación y progreso!', description: 'Candidato 3 trae nuevas ideas y soluciones innovadoras para nuestros problemas actuales.', imageUrl: '/images/candidato3.jpg' },
+  { 
+    name: 'Candidato 1', 
+    slogan: '¡Por un futuro brillante!', 
+    description: 'Candidato 1 es conocido por su arduo trabajo y dedicación a la comunidad.',
+    proposals: ['Mejorar la educación', 'Aumentar el presupuesto para salud'],
+    values: ['Honestidad', 'Transparencia', 'Trabajo duro'],
+    imageUrl: '/images/candidato1.jpg' 
+  },
+  { 
+    name: 'Candidato 2', 
+    slogan: '¡Juntos construiremos un mejor mañana!', 
+    description: 'Candidato 2 ha trabajado incansablemente para mejorar nuestras infraestructuras.',
+    proposals: ['Construir nuevas carreteras', 'Modernizar el transporte público'],
+    values: ['Compromiso', 'Innovación', 'Responsabilidad'],
+    imageUrl: '/images/candidato2.jpg' 
+  },
+  { 
+    name: 'Candidato 3', 
+    slogan: '¡Innovación y progreso!', 
+    description: 'Candidato 3 trae nuevas ideas y soluciones innovadoras para nuestros problemas actuales.',
+    proposals: ['Fomentar la tecnología en la educación', 'Apoyar a startups locales'],
+    values: ['Creatividad', 'Progreso', 'Inclusión'],
+    imageUrl: '/images/candidato3.jpg' 
+  },
 ];
 
 const VotePage: React.FC = () => {
@@ -69,6 +92,18 @@ const VotePage: React.FC = () => {
             {expandedCandidate === candidate.name && (
               <div className="mt-4">
                 <p className="text-gray-700">{candidate.description}</p>
+                <h3 className="text-lg font-bold mt-4">Propuestas:</h3>
+                <ul className="list-disc list-inside text-gray-700">
+                  {candidate.proposals.map((proposal, i) => (
+                    <li key={i}>{proposal}</li>
+                  ))}
+                </ul>
+                <h3 className="text-lg font-bold mt-4">Valores:</h3>
+                <ul className="list-disc list-inside text-gray-700">
+                  {candidate.values.map((value, i) => (
+                    <li key={i}>{value}</li>
+                  ))}
+                </ul>
                 <button 
                   onClick={() => handleVote(candidate)} 
                   className={`mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
